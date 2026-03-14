@@ -88,5 +88,4 @@ print("publicly acknowledged and cited.")
 print()
 print("Status: Awaiting Admissible Input.")
 print()
-print("DOI: https://doi.org/10.5281/zenodo.18993233")
-print("© 2026 Carolina Johnson (CJ) — CC BY 4.0")
+
