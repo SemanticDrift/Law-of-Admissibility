@@ -104,7 +104,7 @@ The Law of Admissibility is falsifiable. The Queen's Challenge is an open invita
 
 Run `queens_challenge.py` in this repository. The test will confirm whether ACF drops to near zero at n = 4k in every recursive family. All results to date confirm the law.
 
-Disproof requires finding a recursive family with k >= 2 that achieves structural decorrelation before 4k or fails to achieve it by 4k.
+Disproof requires finding a recursive system with k ≥ 2 that achieves structural decorrelation before 4k or fails to achieve it by 4k under natural recurrence dynamics only. The system must close on its own internal structure. External corrections, injected weights, regularization terms, or exogenous forcing do not constitute disproof. They constitute confirmation: if your system requires a correction to stabilize before 4k, the correction is compensating for the phase debt the law predicts. The debt is still there. You are managing it, not eliminating it.
 
 **Status: Awaiting Admissible Input.**
 
