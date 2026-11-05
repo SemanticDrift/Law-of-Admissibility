@@ -1,67 +1,54 @@
 # Law of Admissibility
 ### Structural Invariants in Recursive Dynamics (R = 4)
 **Author:** Carolina Johnson (CJ)  
-**Date:** January 2026  
-**License:** CC BY 4.0, Attribution required  
-**DOI:** https://doi.org/10.5281/zenodo.18993233  
-**ORCID:** https://orcid.org/0009-0002-8819-3347
+**Date:** November 2026  
+**DOI:** [10.5281/zenodo.18223592](https://doi.org/10.5281/zenodo.18223592)  
+**ORCID:** [0009-0002-8819-3347
+](https://orcid.org/0009-0002-8819-3347)
 
 
 ---
 
 ## What This Is
 
-The Law of Admissibility identifies a universal structural constant, R = 4, governing the periodic resolution of internal phase debt in recursive systems. It is not domain-specific. It applies across all recursive systems, natural and engineered, from orbital mechanics to quantum coherence to biological folding.
-
-The law is validated empirically through the Dynamical Signal Test and Autocorrelation Function (ACF) analysis. The pattern holds without exception across all recursive families tested.
-
----
-
-## The Problem It Solves
-
-Recursive systems accumulate phase debt between structural lock points. Below the admissibility threshold, systems exhibit Harmonic Friction, a measurable state of structural instability and autocorrelation leakage known as ghosting. Without knowing where the lock point is, systems are designed to operate in permanent friction, leaking information, accumulating error, and never achieving full structural coherence.
-
-The Law of Admissibility identifies the lock point precisely. Once known, it can be engineered for.
+The Law of Admissibility locates the step at which a recursive system of memory depth k completes four full turns of its slowest damped mode. For the unweighted k-nacci recurrences (Fibonacci, Tribonacci, Tetranacci and the higher families), the characteristic roots fix the period P and the damping rate γ of that mode, and the law states where those roots complete a cycle of four quarters.
 
 ---
 
 ## The Law
 
-For any recursive system with memory depth k, the Admissibility Lock occurs at:
+The admissibility cycle has length 4k and consists of four quarters of k steps each. The slowest damped mode has period P, and for every k ≥ 2:
 
 ```
-n = 4k
+k − 1 < P ≤ k
 ```
 
-This is the minimum closure condition for self-reference. At n = 3k the loop is still pointing outward. At n = 4k the system first contains itself completely, achieving structural independence from its initial conditions.
+with equality only for Fibonacci (Theorem 1). It follows that:
 
-The lock is periodic, not permanent. Phase debt resolves at each 4k interval and begins accumulating again toward the next lock at 8k, 12k, and every subsequent 4k interval. A system between lock points is not broken. It is between beats.
+```
+3k < 4P ≤ 4k
+```
+
+so the fourth full turn is not complete at n = 3k and is complete by n = 4k (Corollary 1). The step n = 4k is the **admissibility boundary**: the first window boundary at which the slowest mode has completed four full turns. Exactly four full turns are complete there in every family.
+
+The boundary repeats at 4k, 8k, 12k and every multiple of 4k. At each one, the envelope of the residual of the initial conditions has fallen by the same factor, e^(−4kγ). For integer initial values the residual approaches zero and never reaches it.
 
 ---
 
-## Definition: Harmonic Friction
+## Harmonic Friction
 
-Harmonic Friction (F) defines the lock condition. It measures the structural debt present in the system at any given step n.
+Harmonic Friction (F) measures the position of the system within the current admissibility cycle, as the fraction of the cycle that remains before the next boundary:
 
 ```
-F = | (n / 4k) - 1 | x 100%
+F(n) = (⌈n / 4k⌉ − n / 4k) × 100%
 ```
 
-F = 0 at the Admissibility Lock (n = 4k) by construction.  
-F > 0 between lock points indicates accumulated phase debt.
+F = 0 at every admissibility boundary and begins again after each one. In the first cycle it equals |n/4k − 1| × 100%.
 
-This formula defines the condition. The empirical proof that real recursive systems obey it is provided by the Dynamical Signal Test.
-
----
-
-## The Recursive Gearbox
-
-As memory depth k increases, the dimensionality of the system increases. Each level requires a specific lock point to remain admissible.
-
-| Recursive Family | k | Lock Point (n = 4k) | Friction at n = 4k-1 |
-|-----------------|---|---------------------|----------------------|
+| Recursive Family | k | Boundary (n = 4k) | F at n = 4k − 1 |
+|-----------------|---|-------------------|-----------------|
 | Fibonacci | 2 | 8 | 12.50% |
-| Trinacci | 3 | 12 | 8.33% |
+| Tribonacci | 3 | 12 | 8.33% |
 | Tetranacci | 4 | 16 | 6.25% |
 | Pentanacci | 5 | 20 | 5.00% |
 | Hexanacci | 6 | 24 | 4.17% |
@@ -72,77 +59,36 @@ As memory depth k increases, the dimensionality of the system increases. Each le
 
 ---
 
-## Empirical Validation: The Dynamical Signal Test
+## What the Roots Set and What the Initial Values Set
 
-The Dynamical Signal Test compares each subsequent window of length k to the initial k states of the recursive system. The ACF measures residual phase debt at each step.
+The period P and the damping rate γ are properties of the recurrence. Harmonic Friction F is a property of the cycle. The admissibility boundary 4k is where the two meet. None of these depends on the initial values.
 
-At n = 2k: ACF remains high. The system is still ghosting its past, statistically entangled with its initial conditions.
-
-At n = 4k: ACF drops to near zero across all families. This is not gradual improvement. It is a threshold crossing, the first point at which the system becomes structurally independent of its initial conditions.
-
-The table below shows representative results. Exact values vary slightly across environments. Run the code yourself and verify.
-
-| Recursive Family | k | ACF at 2k (Ghosting) | ACF at 4k (Coherent) |
-|-----------------|---|----------------------|----------------------|
-| Fibonacci | 2 | ~0.92 | ~0.02 |
-| Trinacci | 3 | ~0.76 | ~0.05 |
-| Tetranacci | 4 | ~0.74 | ~0.02 |
-| Pentanacci | 5 | ~0.61 | ~0.00 |
-| Hexanacci | 6 | ~0.59 | ~0.00 |
-| Heptanacci | 7 | ~0.55 | ~0.00 |
-| Octanacci | 8 | ~0.53 | ~0.00 |
-| Nonanacci | 9 | ~0.46 | ~0.00 |
-| Decanacci | 10 | ~0.39 | ~0.00 |
-
-The code is the authority. The table is the illustration.
-
----
-
-## The Queen's Challenge
-
-The Law of Admissibility is falsifiable. The Queen's Challenge is an open invitation to test it directly.
-
-Run `queens_challenge.py` in this repository. The test will confirm whether ACF drops to near zero at n = 4k in every recursive family. All results to date confirm the law.
-
-Disproof requires finding a recursive system with k ≥ 2 that achieves structural decorrelation before 4k or fails to achieve it by 4k under natural recurrence dynamics only. The system must close on its own internal structure. External corrections, injected weights, regularization terms, or exogenous forcing do not constitute disproof. They constitute confirmation: if your system requires a correction to stabilize before 4k, the correction is compensating for the phase debt the law predicts. The debt is still there. You are managing it, not eliminating it.
-
-**Status: Awaiting Admissible Input.**
-
----
-
-## What This Law Does Not Claim
-
-- It does not claim all systems reach F = 0 at 4k regardless of construction. It claims that if a system is recursive with memory depth k, the first structural closure occurs at 4k.
-- It does not claim 4 is a universal constant like π. It claims 4 is the minimum multiplier for self-reference, derived from the recurrence structure itself.
-- It does not replace existing models. It provides a structural constraint that recursive systems must satisfy.
-- It does not claim systems stay locked. The lock is periodic. Phase debt resets and rebuilds at every 4k interval.
-- It does not require new constants. It reveals why structural constants emerge at the ratios they do across domains.
+The initial values set only the coefficients of the modes, so they affect the measured numbers and not the law. Two runs of the same test with different starting values or a different indexing give different measured residuals, and both are correct.
 
 ---
 
 ## Repository Contents
 
-- `README.md` — this file
-- `Law_of_Admissibility_CC_BY_4.0.pdf` — full paper with proofs, tables, and appendix
-- `queens_challenge.py` — standalone validation code, copy and run in any Python environment
+- `README.md`: this file
+- `Law_of_Admissibility_CC_BY_4.0.pdf`: the full paper with the proof, tables and Annex A
 
 ---
 
-## Foundation of the Zero Drift Model
+## Dependencies
 
-This repository is the second in a series. The Law of Admissibility is the structural invariant on which all subsequent frameworks depend.
+| Paper | DOI |
+|-------|-----|
+| The Fibonacci Principle | [10.5281/zenodo.18227844](https://doi.org/10.5281/zenodo.18227844) |
 
-Full publication list: https://www.semanticdrift.net
+---
+
+Full publication list: https://www.SemanticDrift.net
 
 ---
 
 ## Citation
 
-```
-Johnson, C. (2026). Law of Admissibility: Structural Invariants in Recursive Dynamics (R = 4).
-SemanticDrift. DOI: https://doi.org/10.5281/zenodo.18993233
-License: CC BY 4.0
-```
+Johnson, C. (2026). Law of Admissibility: Structural Invariants in Recursive Dynamics (R = 4). SemanticDrift. DOI: [10.5281/zenodo.18223592](https://doi.org/10.5281/zenodo.18223592). License: CC BY 4.0.
 
 ---
 
@@ -151,7 +97,3 @@ License: CC BY 4.0
 © 2026 Carolina Johnson (CJ)  
 Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)  
 Attribution required. https://creativecommons.org/licenses/by/4.0/
-
----
-
-*"The basic laws of the universe are simple, but because our senses are limited, we cannot grasp them. There is a pattern in creation." — Albert Einstein*
