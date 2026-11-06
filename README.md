@@ -1,7 +1,7 @@
 # Law of Admissibility
 ### Structural Invariants in Recursive Dynamics (R = 4)
 **Author:** Carolina Johnson (CJ)  
-**Date:** November 2026 v2  
+**Date:** November 2026 v3  
 **DOI:** [10.5281/zenodo.18223592](https://doi.org/10.5281/zenodo.18223592)  
 **ORCID:** [0009-0002-8819-3347
 ](https://orcid.org/0009-0002-8819-3347)
